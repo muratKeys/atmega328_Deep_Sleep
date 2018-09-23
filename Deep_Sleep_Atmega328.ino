@@ -1,25 +1,22 @@
 #include <avr/sleep.h>
 
-const int LED = 13;                          //LED on pin 13
-const unsigned long KEEP_RUNNING = 10000;    //milliseconds
+const int LED = 1;                          // digital Pin 1
+const unsigned long KEEP_RUNNING = 10000;    
 
 void setup(void)
 {
-    //to minimize power consumption while sleeping, output pins must not source
-    //or sink any current. input pins must have a defined level; a good way to
-    //ensure this is to enable the internal pullup resistors.
 
-    for (byte i=0; i<20; i++) {    //make all pins inputs with pullups enabled
+    for (byte i=0; i<20; i++) {    //make all pins inputs 
         pinMode(i, INPUT_PULLUP);
     }
 
-    pinMode(LED, OUTPUT);          //make the led pin an output
-    digitalWrite(LED, LOW);        //drive it low so it doesn't source current
+    pinMode(LED, OUTPUT);          
+    digitalWrite(LED, LOW);      
 }
 
 void loop(void)
 {
-    for (byte i=0; i<10; i++) {     //flash the LED
+    for (byte i=1; i<=10; i++) {     //open the led
         digitalWrite(LED, HIGH);
         delay(100);
         digitalWrite(LED, LOW);
